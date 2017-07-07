@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SupportMyPC.Models.SupportCall>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>רשימת קריאות</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    <div class="panel-body">
+        <h2>רשימת קריאות פתוחות</h2>
+        <table class="table-striped table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>שם לקוח</th>
+                    <th>אימייל </th>
+                    <th>טלפון</th>
+                    <th>מקור תקלה</th>
+                    <th>תאריך פתיחת תקלה</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (SupportMyPC.Models.SupportCall c in Model)
+            {
+                    <tr>
+                        <td>@c.CustName</td>
+                        <td>@c.CustEmail</td>
+                        <td>@c.CustPhone</td>
+                        <td>@c.ProblemMachine</td>
+                        <td>@c.SupportCallDate</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

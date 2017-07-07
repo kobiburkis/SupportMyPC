@@ -1,0 +1,27 @@
+﻿@model SupportMyPC.Models.SupportCall
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body class="text-center">
+    <p>
+        <h1> פנייתך התקבלה, @Model.CustName </h1>
+        <h2> מספר קריאה : @Model.SupportCallId </h2>
+        @if (Model.RegisteredCust == true)
+        {
+            @:כלקוח רשום פנייתך תטופל בהקדם האפשרי
+}
+        else
+        {
+            @:כלוח לא רשום פנייתך תטופל בתוך 24 שעות , כדאי לשקול להרשם לשירות :)
+}
+    </p>
+    <p>לחץ  <a class="nav-link" asp-action="ListSupportCalls">כאן </a>למעבר לרשימת הקריאות</p>
+</body>
+</html>

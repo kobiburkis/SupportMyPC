@@ -1,0 +1,50 @@
+﻿@model SupportMyPC.Models.SupportCall
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <title>קריאת שירות</title>
+</head>
+<body>
+    <div class="panel panel-success">
+        <div class="panel-heading text-center">
+           <h4>קריאת שירות</h4> 
+        </div>
+        <div class="panel-body">
+            <form class="p-a-1" asp-action="SupportSubmit" method="post">
+                <div asp-validation-summary="All"></div>
+                <div class="form-group">
+                    <label asp-for="CustName">שם:</label>
+                    <input type="text" asp-for="CustName" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CustEmail">אימייל:</label>
+                    <input type="email" asp-for="CustEmail" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CustPhone">טלפון:</label>
+                    <input type="tel" asp-for="CustPhone" />
+                </div>
+                <div class="form-group">
+                    <label>מקור התקלה:</label>
+                    <select asp-for="ProblemMachineID">
+                        <option value="">בחר</option>
+                        <option value="1">מחשב נייח</option>
+                        <option value="2">מחשב נייד</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProblemDescription">תיאור התקלה:</label>
+                    <input type="text" asp-for="ProblemDescription" />
+                </div>
+                <button class="btn btn-primary" type="submit">שלח קריאה</button>
+            </form>
+        </div>
+        </div>
+</body>
+</html>
