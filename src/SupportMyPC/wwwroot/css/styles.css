@@ -6,3 +6,6 @@
 table {
     text-align:right;
 }
+html {
+    direction:rtl;
+}
