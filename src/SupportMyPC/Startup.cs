@@ -7,26 +7,30 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SupportMyPC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SupportMyPC
 {
     public class Startup
     {
+        IConfigurationRoot Configuration;
         public Startup(IHostingEnvironment env)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = new ConfigurationBuilder()
+            .SetBasePath(env.ContentRootPath)
+            .AddJsonFile("appsettings.json").Build();
         }
-
-        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration["Data:SupportCalls:ConnectionString"]));
+
+            /*The AddTransient method specifies that a new
+            FakeRepository object should be created each time the IRepository interface is needed.
+            */
+            services.AddTransient<IRepository,EFRepository>();
             // Add framework services.
             services.AddMvc();
         }
@@ -34,27 +38,17 @@ namespace SupportMyPC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-
             app.UseStaticFiles();
-
-            app.UseMvc(routes =>
-            {
+            app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages();
+            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes => {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                name: "default",
+                template: "{controller=SupportCalls}/{action=ListSupportCalls}/{id?}");
             });
+            SeedData.EnsurePopulated(app);
+
         }
     }
 }

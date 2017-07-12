@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SupportMyPC.Models.SupportCall>
+﻿@model IEnumerable<SupportCall>
 @{
     Layout = null;
 }
@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (SupportMyPC.Models.SupportCall c in Model)
+                @foreach (SupportCall c in Model)
             {
                     <tr>
                         <td>@c.CustName</td>

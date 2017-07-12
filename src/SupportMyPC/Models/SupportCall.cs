@@ -9,6 +9,7 @@ namespace SupportMyPC.Models
     public class SupportCall
     {
         public int SupportCallId { get; set; }
+        public string CustID { get; set; }
         [Required(ErrorMessage = "הזן שם לקוח")]
         public string CustName { get; set; }
         public string CustEmail { get; set; }
