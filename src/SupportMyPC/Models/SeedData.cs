@@ -15,7 +15,6 @@ namespace SupportMyPC.Models
                 context.supportCalls.AddRange(
                new SupportCall
                {
-                   SupportCallId = 1111,
                    CustID = "1",
                    CustName = "שלום עליכם",
                    CustPhone = "0547343242",
@@ -29,7 +28,6 @@ namespace SupportMyPC.Models
                },
          new SupportCall
          {
-             SupportCallId = 2222,
              CustID = "2",
              CustName = "קובי",
              CustPhone = "0547343242",
@@ -43,7 +41,6 @@ namespace SupportMyPC.Models
          },
           new SupportCall
           {
-              SupportCallId = 3333,
               CustID = "3",
               CustName = "אבי",
               CustPhone = "0547343242",
