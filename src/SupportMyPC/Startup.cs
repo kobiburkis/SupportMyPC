@@ -44,6 +44,11 @@ namespace SupportMyPC
             app.UseMvcWithDefaultRoute();
             app.UseMvc(routes => {
                 routes.MapRoute(
+                name: "pagination",
+                template: "SupportCalls/Page{page}",
+                defaults: new { Controller = "SupportCalls", action = "ListSupportCalls" });
+
+                routes.MapRoute(
                 name: "default",
                 template: "{controller=SupportCalls}/{action=ListSupportCalls}/{id?}");
             });

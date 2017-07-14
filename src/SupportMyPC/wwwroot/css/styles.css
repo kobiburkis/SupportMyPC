@@ -5,7 +5,27 @@
 .validation-summary-valid { display: none;}
 table {
     text-align:right;
+    margin-right:10px;
+}
+.tblHeader {
+    text-align:right;
+    font-family:'Arial Unicode MS';
+    font-size:18px;
+    font-style:oblique;
+}
+.tblRow {
+    text-align:right;
+    font-family:'Arial Unicode MS';
+    font-size:16px;
 }
 html {
     direction:rtl;
+}
+.pagebtns {
+     margin-right:10px;
+}
+
+.mynav {
+    background-color:cornflowerblue;
+    border-color:white;
 }

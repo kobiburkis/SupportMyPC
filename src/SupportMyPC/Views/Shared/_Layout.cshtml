@@ -2,9 +2,15 @@
 <html dir="rtl">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>************************SupportMyPC***********************</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <title>SupportMyPC - תמיכה</title>
 </head>
 <body>
-    @RenderBody()
+    <div class="navbar navbar-inverse mynav" role="navigation" >
+        <a class="navbar-brand navbar-right" style="color:black;margin-right:10px" href="#">SupportMyPC</a>
+    </div>
+    <div>@RenderBody()</div>
+   
 </body>
 </html>
